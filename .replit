@@ -1,0 +1,21 @@
+entrypoint = "replit/backend/main.py"
+modules = ["python-3.11"]
+
+[nix]
+channel = "stable-25_05"
+packages = ["libxcrypt", "rsync"]
+
+[unitTest]
+language = "python3"
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix"]
+
+[deployment]
+build = ["bash", "replit/replit.sh", "build"]
+run = ["bash", "replit/replit.sh", "prod"]
+deploymentTarget = "gce"
+
+[[ports]]
+localPort = 8000
+externalPort = 80
